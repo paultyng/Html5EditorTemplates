@@ -1,1 +1,13 @@
-﻿@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, new { @class = "text-box single-line", type = "search" })
+﻿@{
+    var attributes = new Dictionary<string, object>();
+
+    attributes.Add("type", "search");
+    attributes.Add("class", "text-box single-line");
+    attributes.Add("placeholder", ViewData.ModelMetadata.Watermark);
+
+    if (ViewData.ModelMetadata.IsRequired)
+    {
+        attributes.Add("required", "required");
+    }
+}
+@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, attributes)
