@@ -9,5 +9,10 @@
     {
         attributes.Add("required", "required");
     }
+
+    if (ViewData.ModelMetadata.IsReadOnly)
+    {
+        attributes.Add("readonly", "readonly");
+    }
 }
 @Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, attributes)
